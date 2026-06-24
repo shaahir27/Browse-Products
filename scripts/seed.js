@@ -1,6 +1,15 @@
-require("dotenv").config();
-const { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
-const mysql = require("mysql2/promise");
+import dotenv from "dotenv";
+import mysql from "mysql2/promise";
+
+dotenv.config();
+
+const dbURL = new URL(process.env.DATABASE_URL);
+
+const DB_HOST = dbURL.hostname;
+const DB_PORT = dbURL.port;
+const DB_USER = dbURL.username;
+const DB_PASSWORD = dbURL.password;
+const DB_NAME = dbURL.pathname.slice(1);
 
 const TOTAL_PRODUCTS = 200000;
 const BATCH_SIZE = 1000;
@@ -39,9 +48,9 @@ function randomDate(){
 
 function productgeneration(index){
 
-    category = getRandomCategory();
-    price = randomPrice();
-    created_at = randomDate();
+    const category = getRandomCategory();
+    const price = randomPrice();
+    const created_at = randomDate();
 
     return [
         `Product ${index}`,
@@ -56,9 +65,14 @@ async function seedDatabase(){
 
     const connection = await mysql.createConnection({
         host: DB_HOST,
+        port: DB_PORT,
         user: DB_USER,
         password: DB_PASSWORD,
         database: DB_NAME,
+
+        ssl: {
+            rejectUnauthorized: false
+        }
     });
 
     console.log("Connected to the database.");
@@ -81,7 +95,7 @@ async function seedDatabase(){
 
             await connection.query(
                 `
-                INSERT INTO browser.products (name, category, price, created_at, updated_at)
+                INSERT INTO products (name, category, price, created_at, updated_at)
                 VALUES ?
                 `,
                 [batch]

@@ -18,16 +18,22 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "../frontend/")));
 
+const dbURL = new URL(process.env.DATABASE_URL);
+
 const pool = mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    host: dbURL.hostname,
+    port: dbURL.port,
+    user: dbURL.username,
+    password: dbURL.password,
+    database: dbURL.pathname.slice(1),
+
     waitForConnections: true,
     connectionLimit: 30,
     queueLimit: 0,
     timezone: "Z"
 })
+
+console.log(dbURL.password)
 
 
 app.get("/products", async (req, res) => {
