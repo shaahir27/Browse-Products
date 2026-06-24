@@ -1,0 +1,8 @@
+# Ignore environment variables (contains sensitive secrets/keys)
+.env
+
+# Ignore all zip files
+*.zip
+
+# Ignore node_modules (just in case it isn't ignored already)
+node_modules/
