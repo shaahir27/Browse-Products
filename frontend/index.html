@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browser Store</title>
+  <meta name="description" content="Discover our curated collection of products. Browse, filter, and explore the best deals in our catalog." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="home-page">
+
+  <!-- Animated background blobs -->
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-brand" id="nav-brand">
+        <span class="brand-icon">◈</span>
+        <span class="brand-name">Browser<span class="brand-accent">Store</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="/" class="nav-link active" id="nav-home">Home</a>
+        <a href="/products.html" class="nav-link" id="nav-products">Products</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <main class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge" id="hero-badge">
+        <span class="badge-dot"></span>
+        <span>New arrivals just dropped</span>
+      </div>
+
+      <h1 class="hero-title" id="hero-title">
+        Discover Products<br />
+        <span class="hero-gradient-text">You'll Love</span>
+      </h1>
+
+      <p class="hero-subtitle" id="hero-subtitle">
+        Explore our curated catalog of premium products. <br />
+        Filter by category, browse at your own pace.
+      </p>
+
+      <div class="hero-actions" id="hero-actions">
+        <a href="/products.html" class="btn btn-primary" id="cta-explore-btn">
+          <span>Explore Products</span>
+          <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="/products.html" class="btn btn-ghost" id="cta-browse-btn">Browse All</a>
+      </div>
+
+      <!-- Stats row -->
+      <div class="hero-stats" id="hero-stats">
+        <div class="stat-item">
+          <span class="stat-value">∞</span>
+          <span class="stat-label">Products</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-value">Live</span>
+          <span class="stat-label">Real-time Data</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-value">Fast</span>
+          <span class="stat-label">Pagination</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating feature cards -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="float-card float-card-1">
+        <div class="float-card-icon">🏷️</div>
+        <div class="float-card-text">
+          <strong>Filter by Category</strong>
+          <span>Narrow down your search</span>
+        </div>
+      </div>
+      <div class="float-card float-card-2">
+        <div class="float-card-icon">⚡</div>
+        <div class="float-card-text">
+          <strong>Instant Results</strong>
+          <span>Powered by cursor pagination</span>
+        </div>
+      </div>
+      <div class="float-card float-card-3">
+        <div class="float-card-icon">📦</div>
+        <div class="float-card-text">
+          <strong>Rich Details</strong>
+          <span>All product info at a glance</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <p>© 2026 BrowserStore · Built with Express &amp; Vanilla JS</p>
+  </footer>
+
+  <script src="js/home.js"></script>
+</body>
+</html>
