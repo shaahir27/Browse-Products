@@ -33,8 +33,6 @@ const pool = mysql.createPool({
     timezone: "Z"
 })
 
-console.log(dbURL.password)
-
 
 app.get("/products", async (req, res) => {
 
@@ -188,10 +186,10 @@ app.get("/products", async (req, res) => {
     }
 })
 
+const PORT = dbURL.port || 3000;
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("=================================");
-    console.log("Server running on port 3000");
-    console.log("Local: http://localhost:3000");
+    console.log(`Server running on port ${PORT}`);
     console.log("=================================");
 });
