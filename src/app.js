@@ -186,7 +186,7 @@ app.get("/products", async (req, res) => {
     }
 })
 
-const PORT = dbURL.port || 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log("=================================");
