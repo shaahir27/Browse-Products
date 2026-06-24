@@ -27,11 +27,33 @@ const pool = mysql.createPool({
     password: dbURL.password,
     database: dbURL.pathname.slice(1),
 
+    ssl: {
+        rejectUnauthorized: false
+    },
+
     waitForConnections: true,
     connectionLimit: 30,
     queueLimit: 0,
     timezone: "Z"
 })
+
+
+app.get("/health", async (req, res) => {
+    try {
+        const [rows] = await pool.query("SELECT 1 as test");
+
+        res.json({
+            status: "ok",
+            db: rows
+        });
+    }
+    catch(err) {
+        console.error(err);
+        res.status(500).json({
+            error: err.message
+        });
+    }
+});
 
 
 app.get("/products", async (req, res) => {
